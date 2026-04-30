@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>电商生图工作台</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>电商产品生图工作台</h1>
+    <div class="panel">
+      <textarea id="prompt" placeholder="输入商品描述，例如：轻奢风陶瓷咖啡杯，磨砂质感，适合办公室"></textarea>
+      <div class="row">
+        <select id="style">
+          <option value="white_bg">白底图</option>
+          <option value="selling_points">卖点图</option>
+          <option value="detail_page">详情页</option>
+        </select>
+        <select id="ratio">
+          {% for r in ratios %}<option value="{{r}}">{{r}}</option>{% endfor %}
+        </select>
+        <input id="count" type="number" min="1" max="10" value="4" />
+      </div>
+      <button id="genBtn">生成图片</button>
+    </div>
+
+    <h2>生成结果</h2>
+    <div id="gallery" class="gallery"></div>
+
+    <h2>图片转视频脚本</h2>
+    <div class="panel">
+      <input id="videoImage" placeholder="填写已有图片URL（如上方生成图链接）" />
+      <input id="videoPrompt" placeholder="补充视频要求，例如：15秒，突出防水和大容量" />
+      <button id="videoBtn">生成视频脚本</button>
+      <pre id="videoResult"></pre>
+    </div>
+
+    <h2>历史记录</h2>
+    <div id="history"></div>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
